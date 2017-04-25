@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+$[tag.html.open]
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>$[title] | $[forum.name]</title>
+    $[head]
+    <!-- Custom fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+    <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
+    <script>
+    $(document).ready(function(){
+        // Create darkened overlay behind recent threads modal
+        if($('#recent-threads, #guests-online').length){
+            $('#recent-threads, #guests-online').dialog('option', 'modal', true);
+        } else {
+            $(document).on('dialogcreate', function(event){
+                if(event.target.id == 'recent-threads' || 'guests-online'){
+                    $(event.target).dialog('option', 'modal', true);
+                }
+            });
+        }
+
+        // Fix the navigation tree
+        $('#nav-tree .menu_arrow').remove();
+        $('#nav-tree, .nav-tree-branch').removeClass('ui-helper-clearfix');
+
+        // Remove double angle quotes from pagination
+        var $paginationNext = $('.ui-pagination-next > a');
+        var $paginationPrev = $('.ui-pagination-prev > a');
+
+        $paginationNext.text($paginationNext.text().replace('»', ''));
+        $paginationPrev.text($paginationPrev.text().replace('«', ''));
+        
+        // Replace icons with Font Awesome glyphs
+        $('a.likes-button > img').replaceWith('<i class="fa fa-heart"></i>');
+        $('.button .status > img').replaceWith('<i class="fa fa-cog"></i>');
+        $('.ui-search .search-filters-button .icon > img').replaceWith('<i class="fa fa-search"></i>');
+        $('.conversations .item > .icon > img').replaceWith('<i class="fa fa-envelope-o"></i>');
+        $('.conversations .item.new > .icon > i').replaceWith('<i class="fa fa-envelope"></i>');
+
+        // Append Font Awesome glyphs to tricky icons
+        $('.lock_icon').append('<i class="fa fa-lock"></i>');
+        $('.bookmark_icon').append('<i class="fa fa-bookmark"></i>');
+        $('.poll_icon').append('<i class="fa fa-bar-chart"></i>');
+
+        // Create an array for tricky icons
+        var $icons = ['.lock_icon','.bookmark_icon','.poll_icon'];
+
+        // Loop through each item of the array
+        $.each($icons, function(index, value){
+            // Loop through each item of the array on the page
+            $(value).each(function(){
+                // Check if child images are set to display: none
+                if($(this).children('img').css('display') == 'none'){
+                    // Hide the parent if so
+                    // This works better than hiding the icon
+                    // It hides the padding as well
+                    $(this).css('display','none');
+                };
+                // Finally, remove child image from the DOM
+                $(this).find('img').remove();
+            });
+        });
+        
+        // Create variable for the checkmark container
+        var $checkContainer = $('.ui-poll .results tr td .select-box');
+
+        // Loop through each .select-box
+        $checkContainer.each(function(){
+            // Append the Font Awesome checkmark to .select-box
+            $(this).append($('<i class="fa fa-check"></i>'));
+
+            // Then remove the image from the DOM
+            $(this).children('img').remove();
+        });
+    });
+    </script>
+
+    <script>
+    // Remove default inline styles from thread descriptions plugin
+    // Has to be on window.load
+    $(window).load(function(){
+        $('.thread_description_page').removeAttr('style');
+    });
+    </script>
+</head>
+<body>
+    {if $[maintenance_mode]}
+        <div class="maintenance-header">
+            {if $[can.disable_maintenance]}<p>Finished with maintenance? $[disable_maintenance_link].</p>{/if}
+        </div>
+    {/if}
+    
+    <a id="navigation-skip" href="#content" accesskey="s" class="aria-hidden" title="Skip Navigation">Skip Navigation</a>
+    <a href="#" accesskey="d" title="Open Menu" onclick="proboards.hotkeys.activate(Keys.d); return false;"></a>
+    <div id="navigation-menu" class="ui-helper-clearfix">
+        <ul role="navigation">
+            {foreach $[navigation.menu]}
+            <li>
+                <a{if $[navigation.menu.active]} class="state-active"{/if} href="$[navigation.menu.href]"{if $[navigation.menu.accesskey]} accesskey="$[navigation.menu.accesskey]"{/if}>
+                    $[navigation.menu.name]
+                    </a>
+                {if $[navigation.menu.notification.total]}
+                <div class="tip-holder" onclick="window.location='$[navigation.menu.notification.href]'; return false;">
+                    <div class="tip-number">$[navigation.menu.notification.total]</div>
+                </div>
+                {/if}
+            </li>
+            {/foreach}
+        </ul>
+        <p id="welcome">
+            {if !$[current_user.is_member]}
+            Hello, Guest&nbsp;|&nbsp;
+            {if $[login_link] || $[register_link]}
+            $[login_link]{if $[login_link] && $[register_link]} or {/if}$[register_link]
+            {/if}
+            {else}
+            Hello, $[current_user.name]&nbsp;|&nbsp;$[logout_link]
+            {/if}
+        </p>
+    </div>
+    
+    <div id="sidebar">
+        <div class="sidebar-wrapper">
+            <h2 class="sidebar-header">
+                <span class="sidebar-header-welcome">Welcome to</span>
+                $[forum.name]
+            </h2>
+            <p class="sidebar-site-description">
+                Short site description. Kale chips skateboard fingerstache, distillery paleo keytar banjo biodiesel health goth synth bitters viral disrupt literally chia food truck.
+            </p>
+            <div class="sidebar-chatbox">
+                <!-- BEGIN CBOX - www.cbox.ws - v4.2 -->
+                <div id="cboxdiv" style="position: relative; margin: 0 auto; width: 205px; font-size: 0; line-height: 0;">
+                    <div style="position: relative; height: 250px; overflow: auto; overflow-y: auto; -webkit-overflow-scrolling: touch; border:0;"><iframe src="//www4.cbox.ws/box/?boxid=3340347&boxtag=2218&sec=main" marginheight="0" marginwidth="0" frameborder="0" width="100%" height="100%" scrolling="auto" allowtransparency="yes" name="cboxmain4-3340347" id="cboxmain4-3340347"></iframe></div>
+                    <div style="position: relative; height: 82px; overflow: hidden; border:0; border-top: 0px;"><iframe src="//www4.cbox.ws/box/?boxid=3340347&boxtag=2218&sec=form" marginheight="0" marginwidth="0" frameborder="0" width="100%" height="100%" scrolling="no" allowtransparency="yes" name="cboxform4-3340347" id="cboxform4-3340347"></iframe></div>
+                </div>
+                <!-- END CBOX -->
+            </div>
+        </div>
+        <!-- COPYRIGHT | DO NOT MODIFY OR REMOVE -->
+        <div class="sidebar-copyright">
+            <p class="sidebar-copyright-text">
+                All content copyright &copy; its respective owners.<br>
+                Theme copyright &copy; <a href="http://ellimccale.com" title="elli mccale" target="_blank">elli mccale</a>
+            </p>
+        </div>
+        <!-- END COPYRIGHT -->
+    </div>
+    
+    <div id="wrapper">
+        <header>
+            <div id="banner-container" role="banner">
+                <h2 id="banner">
+                    $[forum.title]
+                </h2>
+            </div>
+        </header>
+
+        $[header]
+
+        <div class="nav-tree-container">
+            $[participated_threads_link]
+
+            {if $[navigation.tree]}
+                <div id="navigation-tree">
+                    $[navigation.tree]
+                </div>
+            {/if}
+        </div>
+
+        <div id="content" role="main">
+            {if $[notice]}
+                <div class="container">
+                    <div class="title-bar"><h2>$[notice.title]</h2></div>
+                    <div class="content pad-all cap-bottom">
+                        $[notice.message]
+                    </div>
+                </div>
+            {/if}
+            
+            $[content]
+            
+            $[shoutbox]
+        </div>
+    </div>
+    
+    <div id="footer">
+        $[footer]
+    </div>
+    
+    {if $[is_mobile_browser]}
+    	<br /><p class="center">Switch to the $[mobile_switch_link].</p>
+    {/if}
+</body>
+</html>
