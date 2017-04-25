@@ -19,7 +19,7 @@ On CSS and HTML:
 * https://teamtreehouse.com/
 
 ## Use
-1. You are **welcome** and **encouraged** to edit any part of this theme. However, you [b]may not[/b] use it as a base for your own premade.
+1. You are **welcome** and **encouraged** to edit any part of this theme. However, you **may not** use it as a base for your own premade.
 2. You **are not allowed** to remove any of my comments.
 3. **Absolutely do not** claim *Wild Skin* as your own. Copyrights must remain in tact.
 4. **Absolutely do not** repost this theme without my permission. **Please notify me** if you see it posted outside of *Adoxography*, *ProBoards Support*, or GitHub.
