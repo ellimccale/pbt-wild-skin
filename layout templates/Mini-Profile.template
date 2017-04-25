@@ -1,0 +1,58 @@
+<div class="$[miniprofile_class]">
+    {if $[user.is_member]}
+        <div class="mini-profile-hover">
+            {if $[user.group]}
+                <span class="mini-profile-user-group">
+                    $[user.group.name]
+                </span>
+            {elseif $[user.rank]}
+                <span class="mini-profile-user-group">
+                    $[user.rank.name]
+                </span>
+            {/if}
+            {if $[user.custom_title]}
+                <span class="mini-profile-custom-title">
+                    $[user.custom_title]
+                </span>
+            {/if}
+            <div class="mini-profile-stats">
+                <span class="mini-profile-stats-number">
+                    $[user.posts]
+                </span>
+                post{if $[board.threads] != 1}s{/if}
+            </div>
+            <div class="mini-profile-stats">
+                <span class="mini-profile-stats-number">
+                    $[user.likes]
+                </span>
+                like{if $[board.threads] != 1}s{/if}
+            </div>
+            <div class="mini-profile-personal-text">
+                {if $[user.personal_text.message]}
+                	$[user.personal_text]
+                {else}
+                	I have nothing to say.
+            	{/if}
+            </div>
+            <div class="mini-profile-gif">
+                {foreach $[user.mini_custom_field]}
+                    {if $[user.mini_custom_field.name] == "Mini Profile Gif"}
+                        <span class="$[user.mini_custom_field.content_class]">
+                            <img src="$[user.mini_custom_field.value]" />
+                        </span>
+                    {/if}
+                {/foreach}
+            </div>
+        </div>
+        {if $[user.avatar]}
+            <div class="mini-profile-avatar">
+                $[user.avatar]
+            </div>
+        {/if}
+    {/if}
+    <div class="mini-profile-name">
+        $[user]
+        {if $[user.is_guest]}<span style="font-style:italic;letter-spacing:0.05em;text-transform:lowercase;">Guest</span>{/if}
+        {if $[user.is_deleted]}<span style="font-style:italic;letter-spacing:0.05em;text-transform:lowercase;">Deleted Member</span>{/if}
+    </div>
+</div>
