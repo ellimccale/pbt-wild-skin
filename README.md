@@ -1,4 +1,4 @@
-# Wild Skin v1.0.3
+# Wild Skin v1.0.4
 *Wild Skin* is a brown, tan, and orange theme built for the free forum software [ProBoards](https://proboards.com/). It features a left sidebar, sticky menu, and custom remodels for all major layout templates. It’s intended for use with an RPG set in a forest or wilderness biome. Built using my v5 theme base, [*cast*](https://github.com/elli-petersen/pbt-cast).
 
 As a premade, *Wild Skin* is to be installed to your forum as is, or customized to suit your specific needs. You may edit any part of this skin as long as my credits remain **intact** and **visible**. It **may not** be used as a base for your own premade, claimed as your own, or picked apart for specific code. If you are interested in an individual remodel, please request it.
