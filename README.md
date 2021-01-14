@@ -5,8 +5,6 @@ As a premade theme, *Wild Skin* is to be installed to your forum as is, or custo
 
 This is a design from 2013 and will not be converted to work with ProBoards version 6. It will be replaced with a fresh design to utilize new features in v6.
 
-Be sure to review the [Readme PDF](wild-skin-readme.pdf) for the installation guide, additional information, and a zip containing all board images and relevant PSDs.
-
 If you're less familiar with ProBoards themes or HTML/CSS, I would suggest reviewing these resources before getting started.
 
 On ProBoards themes:
