@@ -1,0 +1,86 @@
+{foreach $[board]}
+    {if !$[board.is_redirect]}
+
+        <!-- Non-Redirect Boards -->
+        <div id="$[board.content_id]" class="$[board.content_class]">
+            <div class="icon">$[board.icon]</div>
+            <div class="main clickable">
+                <p class="link">$[board] {if $[board.num_viewing]}<span class="viewing"> - $[board.num_viewing] Viewing</span>{/if}</p>
+                <p class="latest">
+                    {if $[board.posts] > 0}
+                        {if $[board.last_thread]}
+                            $[board.last_thread.recent_link] by $[board.last_thread.last_post.created_by]
+                            <span class="date">$[board.last_thread.last_post.created_on]</span>
+                        {/if}
+                    {else}
+                        No posts have been made on this board.
+                    {/if}
+                </p>
+            </div>
+            <div class="desc">
+                {if $[board.description]}
+                    <p class="description">$[board.description]</p>
+                {/if}
+                {if $[board.num_mods]}
+                    <p class="moderators">
+                        Moderator{if $[board.num_mods] != 1}s{/if}:
+                        {foreach $[board.moderator_group]}$[board.moderator_group.comma_before] $[board.moderator_group]{/foreach}{if $[board.moderator]}{if $[board.moderator_group]}, {/if}{/if}
+                        {foreach $[board.moderator]}$[board.moderator]$[board.moderator.comma] {/foreach}
+                    </p>
+                {/if}
+                {if $[board.sub_board]}
+                    <p class="sub-boards">
+                        Sub-board{if $[board.sub_board] != 1}s{/if}:
+                        {foreach $[board.sub_board]}<a href="$[board.sub_board.href]">$[board.sub_board.name]</a>$[board.sub_board.comma] {/foreach}
+                    </p>
+                {/if}
+            </div>
+            <div class="threads">
+                <p>
+                    {if $[board.threads] == -1}
+                        N/A
+                    {else}
+                        $[board.threads]<br>thread{if $[board.threads] != 1}s{/if}
+                    {/if}
+                </p>
+            </div>
+            <div class="posts">
+                <p>
+                    {if $[board.posts] == -1}
+                        N/A
+                    {else}
+                        $[board.posts]<br>post{if $[board.posts] != 1}s{/if}
+                    {/if}
+                </p>
+            </div>
+        </div>
+        <!-- / Non-Redirect Boards -->
+
+    {else}
+
+        <!-- Redirect Boards -->
+        <div id="$[board.content_id]" class="$[board.content_class]">
+            <div class="icon">$[board.icon]</div>
+            <div class="main clickable redirect">
+                <p class="link">$[board]</p>
+            </div>
+            <div class="desc">
+                <p class="description">$[board.description]</p>
+            </div>
+        </div>
+        <!-- Redirect Boards -->
+
+    {/if}
+{/foreach}
+
+{if !$[board]}
+
+    <!-- No Boards -->
+    <div class="board item item--no-boards">
+        <div class="desc">
+            <p class="description">No boards were found.</p>
+        </div>
+    </div>
+    <!-- / No Boards -->
+
+{/if}

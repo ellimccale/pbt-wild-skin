@@ -1,0 +1,72 @@
+{foreach $[post]}
+
+    <!-- Posts -->
+    <tr id="$[post.content_id]" class="$[post.content_class]{if $[viewing_recent_posts]} recent{/if}">
+        <td class="$[post.unblocked_class]">
+            <table role="grid">
+                <tr class="content-row">
+                    <td class="left-panel">
+                        $[post.created_by.miniprofile]
+                    </td>
+                    <td class="content">
+                        <article>
+                            <div class="content-head ui-helper-clearfix">
+                                <div class="info">
+                                    $[post.thread]
+                                    <span class="date">Posted $[post.created_on]</span>
+                                    {if $[post.how_posted]}
+                                        <span class="post-method">via $[post.how_posted]</span>
+                                    {/if}
+                                    $[post.likes]
+                                </div>
+                                <div class="controls">
+                                    $[post.quote_button]
+                                    $[post.edit_button]
+                                    $[post.likes.button]
+                                    $[post.select_options]
+                                </div>
+                            </div>
+                            <h3 class="title visually-hidden">Post by $[post.created_by.name] on $[post.created_on]</h3>
+                            <div class="message">$[post.message]</div>
+                            {if $[post.edited] || $[post.created_by.signature]}
+                                <div class="foot">
+                                    {if $[post.edited]}
+                                        <div class="edited_by"><span class="italic">Last Edit:</span> $[post.edited.date] by $[post.edited.by_user]{if $[post.edited.reason]}: $[post.edited.reason]{/if}</div>
+                                    {/if}
+                                    {if $[post.created_by.signature]}
+                                        <div class="signature">$[post.created_by.signature]</div>
+                                    {/if}
+                                </div>
+                            {/if}
+                        </article>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        {if $[post.is_blocked]}
+            <td class="$[post.blocked_class] content center">
+                <div class="message">
+                    <p>You have blocked the author of this post.</p>
+                    $[post.display_blocked_post_button]
+                </div>
+            </td>
+        {/if}
+    </tr>
+    <tr class="spacer"><td></td></tr>
+    <!-- / Posts -->
+
+{/foreach}
+
+{if !$[post]}
+
+    <!-- No Posts -->
+    <tr class="post item item--no-posts">
+        <td class="content center">
+            <div class="message">
+                <p>No posts were found.</p>
+            </div>
+        </td>
+    </tr>
+    <!-- / No Posts -->
+
+{/if}

@@ -1,0 +1,17 @@
+<!-- Micro Profile -->
+<div class="$[microprofile_class]">
+    <div class="avatar">
+        $[user.avatar_small]
+    </div>
+    <div class="info">
+        <span class="name">$[user]</span>
+        {if $[user.is_deleted]}
+            <em>Deleted Member</em>
+        {elseif $[user.group]}
+            $[user.group.name]
+        {else}
+            $[user.rank.name]
+        {/if}
+    </div>
+</div>
+<!-- / Micro Profile -->

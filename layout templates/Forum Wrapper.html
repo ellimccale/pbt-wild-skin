@@ -1,0 +1,417 @@
+<!DOCTYPE HTML>
+$[tag.html.open]
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>$[title] | $[forum.name]</title>
+
+        $[head]
+
+        <!-- Google Fonts: Open Sans -->
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+        <!-- Font Awesome 5.11.2 -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+
+        <script>
+        /**
+         * Style My Tooltips
+         * Manos Malihutsakis (http://manos.malihu.gr)
+         * http://manos.malihu.gr/style-my-tooltips-jquery-plugin
+         */
+        !function(m){var o={init:function(s){s=m.extend({tip_follows_cursor:!1,tip_delay_time:700,tip_fade_speed:300,attribute:"title"},s),m("#s-m-t-tooltip").length||m("body").append("<div id='s-m-t-tooltip'><div></div></div>");var i=m("#s-m-t-tooltip");return i.css({position:"absolute",display:"none"}).data("smt-z-index",i.css("z-index")).children("div").css({width:"100%",height:"100%"}),m(document).on("mouseleave",".smt-current-element",function(){var t=m(this);clearTimeout(smtTooltip_delay),i.style_my_tooltips("hide",{speed:t.data("smt-fade-speed")}),m(document).unbind("mousemove",this.tip_mousemove),this.tip_mousemove=void 0,t.removeClass("smt-current-element"),""===t.attr(s.attribute)&&t.attr(s.attribute,t.data("smt-title"))}),this.on("mouseenter",function(t){var o=m(this),e=o.attr(s.attribute);o.addClass("smt-current-element").data({"smt-title":e,"smt-fade-speed":s.tip_fade_speed}).attr(s.attribute,""),i.style_my_tooltips("update",{title:e,speed:s.tip_fade_speed,delay:s.tip_delay_time,tip_follows_cursor:s.tip_follows_cursor}),this.tip_mousemove||(this.tip_mousemove=function(t){!function(t){var o=t.pageX,e=t.pageY;i.style_my_tooltips("position",{smtCursorCoordsX:o,smtCursorCoordsY:e})}(t)},m(document).bind("mousemove",this.tip_mousemove))})},update:function(t){var o=m(this);o.stop().css({display:"none","z-index":o.data("smt-z-index")}).children("div").text(t.title),smtTooltip_delay=setTimeout(function(){o.style_my_tooltips("show",{speed:t.speed,tip_follows_cursor:t.tip_follows_cursor})},t.delay)},show:function(t){m(this).stop().fadeTo(t.speed,1),t.tip_follows_cursor||(m(document).unbind("mousemove",this.tip_mousemove),this.tip_mousemove=void 0)},hide:function(t){m(this).stop().fadeTo(t.speed,0)},position:function(t){var o=m(this),e=m(window).scrollLeft(),s=m(window).scrollTop(),i=o.outerWidth(!0),d=o.outerHeight(!0),r=t.smtCursorCoordsX+i-e,n=t.smtCursorCoordsY+d-s;if(r<=m(window).width()&&r<=m(document).width())o.css("left",t.smtCursorCoordsX);else{var l=t.smtCursorCoordsX-i;e<=l?o.css("left",l):o.css("left",e)}if(n<=m(window).height()&&n<=m(document).height())o.css("top",t.smtCursorCoordsY);else{var u=t.smtCursorCoordsY-d;s<=u?o.css("top",u):o.css("top",s)}}};m.fn.style_my_tooltips=function(t){return o[t]?o[t].apply(this,Array.prototype.slice.call(arguments,1)):"object"!=typeof t&&t?void m.error("Method "+t+" does not exist"):o.init.apply(this,arguments)}}(jQuery);
+        </script>
+
+        <script>
+        /**
+         * Sticky Kit v1.1.2
+         * Leaf Corcoran (http://leafo.net)
+         * https://leafo.net/sticky-kit/
+         */
+        (function(){var b,f;b=this.jQuery||window.jQuery;f=b(window);b.fn.stick_in_parent=function(d){var A,w,J,n,B,K,p,q,k,E,t;null==d&&(d={});t=d.sticky_class;B=d.inner_scrolling;E=d.recalc_every;k=d.parent;q=d.offset_top;p=d.spacer;w=d.bottoming;null==q&&(q=0);null==k&&(k=void 0);null==B&&(B=!0);null==t&&(t="is_stuck");A=b(document);null==w&&(w=!0);J=function(a,d,n,C,F,u,r,G){var v,H,m,D,I,c,g,x,y,z,h,l;if(!a.data("sticky_kit")){a.data("sticky_kit",!0);I=A.height();g=a.parent();null!=k&&(g=g.closest(k));
+        if(!g.length)throw"failed to find stick parent";v=m=!1;(h=null!=p?p&&a.closest(p):b("<div />"))&&h.css("position",a.css("position"));x=function(){var c,f,e;if(!G&&(I=A.height(),c=parseInt(g.css("border-top-width"),10),f=parseInt(g.css("padding-top"),10),d=parseInt(g.css("padding-bottom"),10),n=g.offset().top+c+f,C=g.height(),m&&(v=m=!1,null==p&&(a.insertAfter(h),h.detach()),a.css({position:"",top:"",width:"",bottom:""}).removeClass(t),e=!0),F=a.offset().top-(parseInt(a.css("margin-top"),10)||0)-q,
+        u=a.outerHeight(!0),r=a.css("float"),h&&h.css({width:a.outerWidth(!0),height:u,display:a.css("display"),"vertical-align":a.css("vertical-align"),"float":r}),e))return l()};x();if(u!==C)return D=void 0,c=q,z=E,l=function(){var b,l,e,k;if(!G&&(e=!1,null!=z&&(--z,0>=z&&(z=E,x(),e=!0)),e||A.height()===I||x(),e=f.scrollTop(),null!=D&&(l=e-D),D=e,m?(w&&(k=e+u+c>C+n,v&&!k&&(v=!1,a.css({position:"fixed",bottom:"",top:c}).trigger("sticky_kit:unbottom"))),e<F&&(m=!1,c=q,null==p&&("left"!==r&&"right"!==r||a.insertAfter(h),
+        h.detach()),b={position:"",width:"",top:""},a.css(b).removeClass(t).trigger("sticky_kit:unstick")),B&&(b=f.height(),u+q>b&&!v&&(c-=l,c=Math.max(b-u,c),c=Math.min(q,c),m&&a.css({top:c+"px"})))):e>F&&(m=!0,b={position:"fixed",top:c},b.width="border-box"===a.css("box-sizing")?a.outerWidth()+"px":a.width()+"px",a.css(b).addClass(t),null==p&&(a.after(h),"left"!==r&&"right"!==r||h.append(a)),a.trigger("sticky_kit:stick")),m&&w&&(null==k&&(k=e+u+c>C+n),!v&&k)))return v=!0,"static"===g.css("position")&&g.css({position:"relative"}),
+        a.css({position:"absolute",bottom:d,top:"auto"}).trigger("sticky_kit:bottom")},y=function(){x();return l()},H=function(){G=!0;f.off("touchmove",l);f.off("scroll",l);f.off("resize",y);b(document.body).off("sticky_kit:recalc",y);a.off("sticky_kit:detach",H);a.removeData("sticky_kit");a.css({position:"",bottom:"",top:"",width:""});g.position("position","");if(m)return null==p&&("left"!==r&&"right"!==r||a.insertAfter(h),h.remove()),a.removeClass(t)},f.on("touchmove",l),f.on("scroll",l),f.on("resize",
+        y),b(document.body).on("sticky_kit:recalc",y),a.on("sticky_kit:detach",H),setTimeout(l,0)}};n=0;for(K=this.length;n<K;n++)d=this[n],J(b(d));return this}}).call(this);
+        </script>
+
+        <script>
+        $(function() {
+            /**
+             * Create darkened modal behind jQuery UI dialogs.
+             * Has to be in `<head>` to load in the right order.
+             */
+            (function darkenDialogOverlay() {
+                var open_ref = $.ui.dialog.prototype.open;
+
+                $.ui.dialog.prototype.open = function() {
+                    this.options.modal = true;
+                    open_ref.apply(this, arguments);
+                }
+            })();
+
+            /**
+             * Update the dimensions of some dialogs on open.
+             * Has to be in `<head>` to load in the right order.
+             */
+            (function updateDialogDimensions() {
+                function onDialogOpen(selector, options) {
+                    $(document).on('dialogopen', selector, function() {
+                        $(this).dialog(options);
+                    });
+                }
+
+                onDialogOpen('#guests-online', { width: 320 });
+                onDialogOpen('#board-notifications', { width: 550 });
+                onDialogOpen('#copy-link-container', { height: 350 });
+                onDialogOpen('#announcement-options', { width: 420, height: 400 });
+                onDialogOpen('#poll-dialog', { width: 635 });
+                onDialogOpen('#report-post-container', { width: 662 });
+                onDialogOpen('#forward-container', { width: 410 });
+                onDialogOpen('#change-users-container', { width: 390 });
+                onDialogOpen('#confirmation', { width: 350 });
+                onDialogOpen('#board_listing', { height: 500 });
+                onDialogOpen('#captcha-container', { width: 475 });
+                //onDialogOpen('#edit_money', { width: 500, height: 375, draggable: true });
+            })();
+        });
+        </script>
+
+        <script>
+        $(window).load(function() {
+            /**
+             * Remove inline styles from Thread Descriptions plugin.
+             * Has to be on window.load in `head`.
+             */
+            $('.thread_description_page').removeAttr('style');
+        });
+        </script>
+
+    </head>
+    <body>
+
+        {if $[maintenance_mode]}
+            <div class="maintenance-header">
+                {if $[can.disable_maintenance]}<p>Finished with maintenance? $[disable_maintenance_link].</p>{/if}
+            </div>
+        {/if}
+
+        <!-- Primary Navigation -->
+        <nav aria-labelledby="primary-navigation">
+
+            <!-- Label for this navigation; read by screen readers -->
+            <h2 id="primary-navigation" class="visually-hidden">Primary Navigation</h2>
+
+            <!-- Links for keyboard users to skip to content -->
+            <a id="navigation-skip" href="#content" accesskey="s" class="aria-hidden" title="Skip Navigation">Skip Navigation</a>
+            <a href="#" accesskey="d" title="Open Menu" onclick="proboards.hotkeys.activate(Keys.d); return false;"></a>
+
+            <!-- Menu -->
+            <div id="navigation-menu" class="ui-helper-clearfix">
+                <ul>
+                    {foreach $[navigation.menu]}
+                        <li{if $[navigation.menu.active]} class="state-active"{/if}>
+                            <a href="$[navigation.menu.href]"{if $[navigation.menu.accesskey]} accesskey="$[navigation.menu.accesskey]"{/if}>
+                                $[navigation.menu.name]
+                                {if $[navigation.menu.notification.total]}
+                                    <div class="tip-holder" onclick="window.location='$[navigation.menu.notification.href]'; return false;">
+                                        <div class="tip-number">$[navigation.menu.notification.total]</div>
+                                    </div>
+                                {/if}
+                            </a>
+                        </li>
+                    {/foreach}
+                </ul>
+                <p id="welcome">
+                    {if !$[current_user.is_member]}
+                        Hello, Guest&nbsp;|&nbsp;  
+                        {if $[login_link] || $[register_link]}
+                            $[login_link]{if $[login_link] && $[register_link]} or {/if}$[register_link]
+                        {/if}
+                    {else}
+                        Hello, $[current_user.name]&nbsp;|&nbsp;$[logout_link]
+                    {/if}
+                </p>
+            </div>
+            <!-- / Menu -->
+
+        </nav>
+        <!-- / Primary Navigation -->
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar__wrapper">
+
+                <!-- Customize the sidebar heading here -->
+                <h2 class="sidebar__header">
+                    <span class="sidebar__header--small">Welcome to</span>
+                    <!-- The variable below automatically populates the title of your forum -->
+                    $[forum.name]
+                </h2>
+
+                <!-- Customize the sidebar description here -->
+                <p class="sidebar__description">Short site description. Kale chips skateboard fingerstache, distillery paleo keytar banjo biodiesel health goth synth bitters viral disrupt literally chia food truck.</p>
+
+                <!-- Insert your Cbox code between the BEGIN / END comments -->
+                <div class="sidebar__chatbox">
+
+                    <!-- BEGIN CBOX - www.cbox.ws -->
+                    <div id="cboxdiv" style="position: relative; margin: 0 auto; width: 215px; font-size: 0; line-height: 0;">
+                        <div style="position: relative; height: 250px; overflow: auto; overflow-y: auto; -webkit-overflow-scrolling: touch; border:0;"><iframe src="//www4.cbox.ws/box/?boxid=3340347&boxtag=2218&sec=main" marginheight="0" marginwidth="0" frameborder="0" width="100%" height="100%" scrolling="auto" allowtransparency="yes" name="cboxmain4-3340347" id="cboxmain4-3340347"></iframe></div>
+                        <div style="position: relative; height: 82px; overflow: hidden; border:0; border-top: 0px;"><iframe src="//www4.cbox.ws/box/?boxid=3340347&boxtag=2218&sec=form" marginheight="0" marginwidth="0" frameborder="0" width="100%" height="100%" scrolling="no" allowtransparency="yes" name="cboxform4-3340347" id="cboxform4-3340347"></iframe></div>
+                    </div>
+                    <!-- END CBOX -->
+
+                </div>
+            </div>
+
+            <!-- Copyright | DO NOT REMOVE -->
+            <!--
+              NOTE: My attribution may optionally be moved to the footer, but it should
+                    remain globally visible. Please be cool and do not remove it.
+              -->
+            <div class="sidebar__copyright">
+                <p class="sidebar__copyright-text">
+                    Theme copyright &copy; <a href="https://ellimccale.com" target="_blank" rel="noreferrer">elli mccale</a>
+                    <a href="http://creativecommons.org/licenses/by-nd/4.0/" rel="license">
+                        <img src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" alt="Creative Commons License" style="border-width: 0;">
+                    </a>
+                </p>
+            </div>
+            <!-- / Copyright -->
+
+        </aside>
+        <!-- / Sidebar -->
+
+        <!-- Forum Wrapper -->
+        <div id="wrapper">
+
+            <!-- Header -->
+            <header>
+                <a href="/" target="_parent" title="Home">
+                    <h1 id="banner">
+                        <span class="visually-hidden">$[forum.name]</span>
+                    </h1>
+                </a>
+            </header>
+            <!-- / Header -->
+
+            <!-- Required variable: contains PB scripts and ads -->
+            $[header]
+
+            <!-- Navigation Tree -->
+            <div class="nav-tree-container ui-helper-clearfix">
+                {if $[navigation.tree]}
+                    $[participated_threads_link]
+
+                    <div id="navigation-tree">
+                        $[navigation.tree]
+                    </div>
+                {/if}
+            </div>
+            <!-- / Navigation Tree -->
+
+            <!-- Main Content -->
+            <main id="content">
+                {if $[notice]}
+
+                    <!-- Notice -->
+                    <div class="container">
+                        <div class="title-bar"><h2>$[notice.title]</h2></div>
+                        <div class="content">
+                            <div class="content-box">$[notice.message]</div>
+                        </div>
+                    </div>
+                    <!-- / Notice -->
+
+                {/if}
+
+                $[content]
+
+                $[shoutbox]
+            </main>
+            <!-- / Main Content -->
+
+        </div>
+
+        <!-- Required variable: contains PB scripts and ads -->
+        $[footer]
+
+        <!--
+          NOTE: This link only appears on mobile browsers, and gives users the option
+                to switch to the mobile version of the forum.
+          -->
+        {if $[is_mobile_browser]}
+            <p id="js-switch-link">Switch to the $[mobile_switch_link].</p>
+        {/if}
+
+        <!--
+          NOTE: These are the scripts that control the custom behavior of the theme.
+                Individual behaviors are wrapped in immediately invoked function expressions.
+                Tread carefully, as JavaScript can be delicate. Additional scripts can be
+                found in the layout templates they affect, such as the Thread and Post lists.
+          -->
+        <script>
+        $(function() {
+            // Add lang attribute to `<html>` element to improve accessibility
+            (function addLang() {
+                $('html').attr('lang', 'en-us');
+            })();
+
+            // Add classes to ad containers
+            (function containAds() {
+                $('iframe#ad-desktop-top').parent().attr('class', 'ad-banner ad-banner--top');
+                $('iframe#ad-desktop-top[height="50"]').parent().addClass('ad-banner--top-50');
+                $('iframe#ad-desktop-top[height="60"]').parent().addClass('ad-banner--top-60');
+                $('iframe#ad-desktop-top[height="90"]').parent().addClass('ad-banner--top-90');
+                $('iframe#ad-desktop-top[height="250"]').parent().addClass('ad-banner--top-250');
+                $('iframe#ad-desktop-bottom').parent().attr('class', 'ad-banner ad-banner--bottom');
+            })();
+
+            // Sticky Kit
+            (function stickyKit() {
+                function paginateStickyKit() {
+                    $('.mini-profile').stick_in_parent({
+                        offset_top: 107,
+                    });
+                }
+
+                paginateStickyKit();
+                pb.events.on('afterSearch', paginateStickyKit);
+            })();
+
+            // Remove double angle quotes from pagination
+            (function removeAngleQuotes() {
+                var $pageNext = $('.ui-pagination-next > a');
+                var $pagePrev = $('.ui-pagination-prev > a');
+
+                $pageNext.text($pageNext.text().replace('»', ''));
+                $pagePrev.text($pagePrev.text().replace('«', ''));
+            })();
+
+            // Modifications to the navigation tree
+            (function modifyNavTree() {
+                $('#nav-tree .menu_arrow').remove();
+                $('#nav-tree, .nav-tree-branch').removeClass('ui-helper-clearfix');
+            })();
+
+            // Modifications to the footer
+            (function modFooter() {
+                var $footer = $('.c-footer');
+
+                // Append mobile switch link
+                $('#js-switch-link').appendTo($footer);
+            })();
+
+            // Replace default icons with Font Awesome glyphs
+            (function replaceDefaultIcons() {
+                // Shoutbox refresh icon
+                $('.shoutbox_form .button').attr('title', 'Refresh');
+                $('.shoutbox_form .button img').replaceWith('<i class="fas fa-sync-alt"></i>');
+
+                // Icons that need to be updated on afterSearch
+                function paginateIcons() {
+                    // Post/Message interaction icons
+                    $('.button .status').parent().attr('title', 'Options');
+                    $('.button .status > img').replaceWith('<i class="fas fa-cog" aria-hidden="true"></i>');
+                    $('.ui-search .search-filters-button').attr('title', 'Search');
+                    $('.ui-search .search-filters-button .icon > img').replaceWith('<i class="fas fa-search" aria-hidden="true"></i>');
+
+                    // Like icon
+                    function replaceLikeButton() {
+                        var $likeButtonImg = $('a.likes-button');
+
+                        $likeButtonImg.each(function() {
+                            var $this = $(this);
+
+                            if ($this.hasClass('liked')) {
+                                $this.attr('title', 'Unlike');
+                                $this.children('img').replaceWith('<i class="fas fa-heart" aria-hidden="true"></i>');
+                            } else {
+                                $this.attr('title', 'Like');
+                                $this.children('img').replaceWith('<i class="far fa-heart" aria-hidden="true"></i>');
+                            }
+                        });
+                    }
+
+                    function updateLikeButton() {
+                        var $this = $(this);
+
+                        if ($this.hasClass('liked')) {
+                            $this.attr('title', 'Like');
+                            $this.children('i').removeClass('fas').addClass('far');
+                        } else {
+                            $this.attr('title', 'Unlike');
+                            $this.children('i').removeClass('far').addClass('fas');
+                        }
+                    }
+
+                    replaceLikeButton();
+                    $('a.likes-button').on('click', updateLikeButton);
+
+                    // Conversation icons
+                    $('.conversations .item > .icon > img').replaceWith('<i class="far fa-envelope" title="Message"></i>');
+                    $('.conversations .item.new > .icon > i').replaceWith('<i class="fas fa-envelope" title="New Message"></i>');
+
+                    // Thread status icons
+                    var lockIcon = '<i class="fas fa-lock"></i>';
+                    var bookmarkIcon = '<i class="fas fa-bookmark"></i>';
+                    var pollIcon = '<i class="fas fa-chart-bar"></i>';
+                    var fallingIcon = '<i class="fas fa-anchor"></i>';
+
+                    function replaceThreadIcons(oldIcon, newIcon, title) {
+                        $(oldIcon).each(function() {
+                            var $this = $(this);
+
+                            if (!$this.find('i').length) {
+                                $this.attr('title', title);
+                                $this.append(newIcon);
+                                $this.find('img').remove();
+                            }
+                        });
+                    }
+
+                    replaceThreadIcons('.lock_icon', lockIcon, 'Locked');
+                    replaceThreadIcons('.bookmark_icon', bookmarkIcon, 'Bookmarked');
+                    replaceThreadIcons('.poll_icon', pollIcon, 'Poll');
+                    replaceThreadIcons('.falling_icon', fallingIcon, 'This thread is falling');
+
+                    // Checkmark icon
+                    var $checkContainer = $('.ui-poll .results tr td .select-box');
+
+                    $checkContainer.each(function() {
+                        var $this = $(this);
+
+                        if (!$this.find('i').length) {
+                            $this.append('<i class="fas fa-check" aria-hidden="true"></i>');
+                            $this.children('img').remove();
+                        }
+                    });
+                }
+
+                paginateIcons();
+                pb.events.on('afterSearch', paginateIcons);
+            })();
+
+            // Style My Tooltips
+            (function styleMyTooltips() {
+                function paginateTooltips() {
+                    $('[title]').style_my_tooltips({
+                        tip_follows_cursor: true,
+                        tip_delay_time: 0,
+                        tip_fade_speed: 200,
+                    });
+                }
+
+                paginateTooltips();
+                pb.events.on('afterSearch', paginateTooltips);
+            })();
+        });
+        </script>
+        <img src="https://ellimccale.com/projects/proboards/pixel.gif" alt="" class="visually-hidden">
+
+    </body>
+</html>

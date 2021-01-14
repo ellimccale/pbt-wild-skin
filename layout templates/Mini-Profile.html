@@ -1,0 +1,74 @@
+<!-- Mini Profile -->
+<div class="$[miniprofile_class]">
+    {if !$[user.is_guest]}
+        <div class="mini-profile__hover">
+            <p class="mini-profile__user-group">
+                {if $[user.group]}
+                    $[user.group.name]
+                {elseif $[user.rank]}
+                    $[user.rank.name]
+                {/if}
+            </p>
+
+            {if $[user.custom_title]}
+                <p class="mini-profile__user-title">
+                    $[user.custom_title]
+                </p>
+            {/if}
+
+            <div class="mini-profile__fields">
+                {foreach $[user.mini_custom_field]}
+                    {if $[user.mini_custom_field.name] == "Application" || $[user.mini_custom_field.name] == "Plotter" || $[user.mini_custom_field.name] == "Tracker"}
+
+                        <!-- Icon Custom Fields -->
+                        <div class="mini-profile__fields-icon">
+                            <a href="$[user.mini_custom_field.value]" title="$[user.mini_custom_field.name]">
+                                <span>
+                                    {if $[user.mini_custom_field.name] == "Application"}
+                                        <i class="fas fa-address-card" aria-hidden="true"></i>
+                                    {elseif $[user.mini_custom_field.name] == "Plotter"}
+                                        <i class="fas fa-book" aria-hidden="true"></i>
+                                    {elseif $[user.mini_custom_field.name] == "Tracker"}
+                                        <i class="fas fa-list" aria-hidden="true"></i>
+                                    {/if}
+                                </span>
+                            </a>
+                        </div>
+                        <!-- / Icon Custom Fields -->
+
+                    {/if}
+                {/foreach}
+            </div>
+
+            <p class="mini-profile__personal-text">
+                {if $[user.personal_text.message]}
+                    $[user.personal_text.message]
+                {else}
+                    I have nothing to say.
+                {/if}
+            </p>
+
+            <div class="mini-profile__gif">
+                {foreach $[user.mini_custom_field]}
+                    {if $[user.mini_custom_field.name] == "Mini Profile Gif"}
+                        <img src="$[user.mini_custom_field.value]" alt="">
+                    {/if}
+                {/foreach}
+            </div>
+        </div>
+
+        {if $[user.avatar]}
+            <div class="mini-profile__avatar">$[user.avatar]</div>
+        {/if}
+    {/if}
+
+    <p class="mini-profile__user-name">
+        $[user]
+        {if $[user.is_guest]}
+            <br><span class="mini-profile__user-name--small">Guest</span>
+        {elseif $[user.is_deleted]}
+            <br><span class="mini-profile__user-name--small">Deleted</span>
+        {/if}
+    </p>
+</div>
+<!-- / Mini Profile -->

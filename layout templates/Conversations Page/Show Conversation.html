@@ -1,0 +1,50 @@
+<!-- Message Container -->
+<div class="container messages">
+
+    <!-- Title Bar -->
+    <div class="title-bar">
+        <ul class="controls">
+            <li>$[reply_button]</li>
+        </ul>
+
+        <h2>$[conversation.subject]</h2>
+    </div>
+    <!-- / Title Bar -->
+
+    <!-- Control Bar -->
+    <div class="control-bar ui-helper-clearfix $[scroll_class]">
+        $[search]
+
+        <div class="controls">
+            $[action_menu]
+        </div>
+
+        $[pagination]
+    </div>
+    <!-- / Control Bar -->
+
+    <!-- Message List -->
+    <div class="content">
+        <div class="participants ui-helper-clearfix">
+            $[labels]
+            <div>Participants: $[participants]</div>
+        </div>
+
+        <table role="presentation">
+            <tbody class="$[list_class]">
+                $[message_list]
+            </tbody>
+        </table>
+
+        {if !$[quick_reply]}
+            {if $[bottom_reply_button]}
+                <div class="reply_button pad-all-double">$[bottom_reply_button]<br class="clear"></div>
+            {/if}
+        {/if}
+    </div>
+    <!-- / Message List -->
+
+</div>
+<!-- / Message Container -->
+
+$[quick_reply]

@@ -1,0 +1,28 @@
+<!-- Activity -->
+{if $[can.set_status]}
+
+    <!-- Status -->
+    <div class="content-box">
+        $[form.header]
+        <table>
+            <tr>
+                <td class="status-input">$[form.update.input]</td>
+                <td class="status-submit">$[form.submit.button]</td>
+            </tr>
+        </table>
+        $[form.footer]
+    </div>
+    <!-- / Status -->
+
+{/if}
+
+<div class="content-box">
+    <table class="activity list">
+        <tbody class="$[activity_list_class]">
+            $[activity_list]
+        </tbody>
+    </table>
+
+    $[more_button]
+</div>
+<!-- / Activity -->

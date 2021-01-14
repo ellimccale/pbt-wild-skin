@@ -1,0 +1,125 @@
+<!-- User Profile Container -->
+<div class="container show-user">
+
+    <!-- Title Bar -->
+    <div class="title-bar">
+        <h2>$[user.name] (@$[user.username])</h2>
+    </div>
+    <!-- / Title Bar -->
+
+    <!-- User Profile Tabs -->
+    <div class="ui-tabMenu">
+        <ul class="ui-helper-clearfix">
+            {foreach $[menu]}<li{if $[menu.active]} class="ui-active"{/if}><a href="$[menu.href]">$[menu.text]</a></li>{/foreach}
+        </ul>
+    </div>
+    <!-- / User Profile Tabs -->
+
+    <!-- User Profile Content -->
+    <div class="content">
+        $[user.avatar_medium]
+
+        <div class="show-user__profile">
+
+            <!-- User Profile Header -->
+            <div class="show-user__header content-box">
+                <div class="show-user__user">
+                    <p class="show-user__user-name" style="color: $[user.color];">$[user.name]</p>
+                    <p class="show-user__user-group">
+                        {if $[user.group]}
+                            $[user.group.name]
+                        {else}
+                            $[user.rank.name]
+                        {/if}
+                        <span>(@$[user.username])</span>
+                    </p>
+                </div>
+                <div>
+                    <div class="show-user__controls ui-helper-clearfix">
+                        <!-- Do not show these buttons if the user is viewing their own profile -->
+                        {if $[user.id] != $[current_user.id]}
+                            <!-- Do not show options on admin account -->
+                            {if $[user.id] != 1}
+                                $[options]
+                            {/if}
+
+                            $[follow_button]
+
+                            {if $[send_message_button]}
+                                <a href="$[send_message_button.href]" class="$[send_message_button.class]" title="Send Message">
+                                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                                </a>
+                            {/if}
+
+                            <!--
+                              NOTE: Uncomment this block to add the donation button for the Monetary System plugin.
+                              -->
+                            <!-- <a href="/user/$[user.id]?monetarydonation&view=1" class="button" title="Send Donation">
+                                <i class="fas fa-money-bill-wave" aria-hidden="true"></i>
+                            </a> -->
+                        {/if}
+
+                        {if $[edit_profile_button]}
+                            <a href="$[edit_profile_button.href]" class="$[edit_profile_button.class]" title="Edit Profile">
+                                <i class="fas fa-edit" aria-hidden="true"></i>
+                            </a>
+                        {/if}
+                    </div>
+                    <p class="show-user__online">
+                        {if $[user.is_online]}
+                            <span class="bold">Currently Online</span>
+                        {else}
+                            <span>Last Online $[user.last_online]</span>
+                        {/if}
+                    </p>
+                </div>
+            </div>
+            <!-- / User Profile Header -->
+
+            <div class="ui-helper-clearfix">
+                $[content]
+            </div>
+        </div>
+    </div>
+    <!-- / User Profile Content -->
+
+</div>
+<!-- / User Profile COntainer -->
+
+<script>
+$(function() {
+    // Build follow button with icons
+    (function buildFollowButton() {
+        function buildFollowButton() {
+            var $followButton = $('.follow_button');
+            var buttonContent = '';
+
+            /**
+             * If the current user is already following the user they're viewing,
+             * we want to show the "Unfollow" button.
+             */
+            if ($followButton.text() === 'Unfollow') {
+                $followButton.attr('title', 'Unfollow User');
+                buttonContent += '<i class="fas fa-user-times" aria-hidden="true"></i>';
+            } else { // Otherwise, show the "Follow" button
+                $followButton.attr('title', 'Follow User');
+                buttonContent += '<i class="fas fa-user-plus" aria-hidden="true"></i>';
+            }
+
+            $followButton.html(buttonContent);
+        }
+
+        buildFollowButton();
+
+        /**
+         * This is needed because the ajax that updates this button overwrites the
+         * button content with `new_button_text`, so we have to wait until it's done.
+         */
+        $(document).ajaxComplete(function(event, xhr, settings) {
+            if (settings.url === proboards.routeMap.follow_user) {
+                buildFollowButton();
+            }
+        });
+    })();
+});
+</script>
